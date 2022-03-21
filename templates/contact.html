@@ -2,25 +2,33 @@
 {{define "body"}}
 
 <h2>Contact</h2>
-<hr/>
+<hr />
 <div class="wrapper">
-<h4>Email:</h4>
-<a href="mailto:lucasr@posteo.us"><span class="link">lucasr@posteo.us</span></a>
-<h4>Github:</h4>
-<span class="aqua">$/</span><a href="https://github.com/lucasritossa">LucasRitossa</a><br>
-<span class="aqua">$/</span><a href="https://github.com/textureset">Textureset</a>
- </div>
+    <h4>Email:</h4>
+    <a href="mailto:lucasr@posteo.us"><span class="link">lucasr@posteo.us</span></a>
+    <h4>Github:</h4>
+    <span class="aqua">$/</span><a href="https://github.com/lucasritossa">LucasRitossa</a><br>
+    <span class="aqua">$/</span><a href="https://github.com/textureset">Textureset</a>
+</div>
 
 <style>
     .wrapper {
-     padding: 20vh;
+        padding: 20vh;
     }
+
     .aqua {
         color: var(--aqua)
     }
+
     .link {
         color: var(--blue)
     }
 
+    @media (max-width: 60vh) {
+        .wrapper {
+            font-size: 2vh;
+            padding: 12vh;
+        }
+    }
 </style>
 {{end}}
