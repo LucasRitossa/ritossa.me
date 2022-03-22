@@ -1,8 +1,7 @@
 {{define "title"}}Contact{{end}}
 {{define "body"}}
 
-<h2>Contact</h2>
-<hr />
+<p class="title">Contact</p>
 <div class="wrapper">
     <h4>Email:</h4>
     <a href="mailto:lucasr@posteo.us"><span class="link">lucasr@posteo.us</span></a>
@@ -24,10 +23,22 @@
         color: var(--blue)
     }
 
+    .title {
+        font-size: 1.4vh;
+        padding: 2vh;
+    }
+
     @media (max-width: 60vh) {
         .wrapper {
             font-size: 2vh;
             padding: 12vh;
+        }
+
+        .title {
+            text-align: left;
+            padding:  2vh;
+            font-size: 1.2vh;
+            height: 100%;
         }
     }
 </style>

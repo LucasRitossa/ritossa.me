@@ -21,12 +21,12 @@ func main() {
 }
 
 func serveTemplate(w http.ResponseWriter, r *http.Request) {
-	lp := "templates/layout.html"
+	lp := "views/layout.html"
 	if r.URL.Path == "/" {
 		serveIndex(lp, w, r)
 		return
 	}
-	fp := filepath.Join("templates", filepath.Clean(r.URL.Path))
+	fp := filepath.Join("views", filepath.Clean(r.URL.Path))
 
 	info, err := os.Stat(fp)
 	if err != nil {
@@ -58,7 +58,7 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 }
 
 func serveIndex(lp string, w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles(lp, "templates/index.html")
+	tmpl, err := template.ParseFiles(lp, "views/index.html")
 	if err != nil {
 		// Log the detailed error
 		log.Println(err.Error())

@@ -1,8 +1,7 @@
 {{define "title"}}About{{end}}
 {{define "body"}}
 
-<h2>About</h2>
-<hr />
+<p class="title">About</p>
 
 <p>Hello, thanks for checking out my website. I'm currently working on developing
     <a href="http://textureset.com"><span class="link">textureset.com</span></a>, a online marketplace for digital
@@ -18,10 +17,22 @@
         color: var(--blue);
     }
 
+    .title {
+        font-size: 1.4vh;
+        padding: 2vh;
+    }
+
     @media (max-width: 60vh) {
         p {
             font-size: 2vh;
             padding: 12vh;
+        }
+
+        .title {
+            text-align: left;
+            padding: 2vh;
+            font-size: 1.2vh;
+            height: 100%;
         }
     }
 </style>
