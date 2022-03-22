@@ -1,12 +1,18 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 )
+
+type Data struct {
+	Projects []string
+}
 
 func main() {
 	fs := http.FileServer(http.Dir("./static"))
@@ -21,6 +27,17 @@ func main() {
 }
 
 func serveTemplate(w http.ResponseWriter, r *http.Request) {
+
+	data := Data{
+		Projects: []string{},
+	}
+	fileDir := "static"
+	files, err := ioutil.ReadDir(fileDir)
+	for _, file := range files {
+		data.Projects = append(data.Projects, file.Name())
+		fmt.Println(file.Name())
+	}
+
 	lp := "views/layout.html"
 	if r.URL.Path == "/" {
 		serveIndex(lp, w, r)
@@ -43,14 +60,12 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 
 	tmpl, err := template.ParseFiles(lp, fp)
 	if err != nil {
-		// Log the detailed error
 		log.Println(err.Error())
-		// Return a generic "Internal Server Error" message
 		http.Error(w, http.StatusText(500), 500)
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "layout", nil)
+	err = tmpl.ExecuteTemplate(w, "layout", data)
 	if err != nil {
 		log.Println(err.Error())
 		http.Error(w, http.StatusText(500), 500)

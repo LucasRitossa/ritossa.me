@@ -1,0 +1,39 @@
+{{define "title"}}Lucas Ritossa{{end}}
+{{define "body"}}
+<p class="title">Contact</p>
+<div class="wrapper">
+    {{range .Projects}}
+    <a href="static/{{.}}">
+        <!-- render, and slice .html suffix -->
+        <p class="link">{{slice . 0 5}}</p>
+    </a>
+    {{end}}
+</div>
+<style>
+    .wrapper {
+        padding: 20vh;
+    }
+
+    .link {
+        color: var(--blue)
+    }
+
+    .title {
+        font-size: 1.4vh;
+        padding: 2vh;
+    }
+
+    @media (max-width: 60vh) {
+        .wrapper {
+            font-size: 2vh;
+            padding: 12vh;
+        }
+
+        .title {
+            text-align: left;
+            padding: 2vh;
+            font-size: 1.2vh;
+            height: 100%;
+        }
+</style>
+{{end}}
