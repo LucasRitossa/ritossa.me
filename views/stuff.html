@@ -2,12 +2,16 @@
 {{define "body"}}
 <p class="title">Contact</p>
 <div class="wrapper">
-    {{range .Projects}}
-    <a href="static/{{.}}">
-        <!-- render, and slice .html suffix -->
-        <p class="link">{{slice . 0 5}}</p>
-    </a>
-    {{end}}
+    <p>Here are some various static sites to visit. These are mostly random things I'm interested in at a given
+        time.</p><br>
+    <p class="pagewrapper">
+        {{range .Projects}}
+        <a href="static/{{.}}.html">
+            <!-- render and slice .html suffix -->
+            {{.}}
+        </a>
+        {{end}}
+    </p>
 </div>
 <style>
     .wrapper {
@@ -21,6 +25,16 @@
     .title {
         font-size: 1.4vh;
         padding: 2vh;
+    }
+
+    p a {
+        word-spacing: 1vh;
+        text-decoration: none;
+    }
+
+    .pagewrapper {
+        padding:4px;
+        border: 1px solid
     }
 
     @media (max-width: 60vh) {

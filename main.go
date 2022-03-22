@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 type Data struct {
@@ -34,8 +35,10 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 	fileDir := "static"
 	files, err := ioutil.ReadDir(fileDir)
 	for _, file := range files {
-		data.Projects = append(data.Projects, file.Name())
+		name := strings.TrimSuffix(file.Name(), filepath.Ext(file.Name()))
+		fmt.Println(name)
 		fmt.Println(file.Name())
+		data.Projects = append(data.Projects, name)
 	}
 
 	lp := "views/layout.html"
