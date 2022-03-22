@@ -36,8 +36,6 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 	files, err := ioutil.ReadDir(fileDir)
 	for _, file := range files {
 		name := strings.TrimSuffix(file.Name(), filepath.Ext(file.Name()))
-		fmt.Println(name)
-		fmt.Println(file.Name())
 		data.Projects = append(data.Projects, name)
 	}
 
